@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-form1',
@@ -7,15 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Form1Page implements OnInit {
 
-  nome : string = "";
+  contato = {
+    nome: '',
+    email: '',
+    telefone: '',
+    mensagem: ''
+  }
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  salvar(){
-    console.log("Nome digitado: "+this.nome);
+
+
+  salvar(form: NgForm) {
+    if (form.valid) {
+      console.log("Dados: ", this.contato);
+    } else {
+      console.log("Formulário inválido!")
+    }
   }
 
 }
