@@ -13,5 +13,4 @@ let numerosAleatorios : parametros = {
     n2 : 20
 }
 
-
 soma(numerosAleatorios)
