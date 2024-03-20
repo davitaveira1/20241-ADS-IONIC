@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>form4</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <form #form="ngForm" (ngSubmit)="submitForm(form)">
+
+    <ion-item>
+      <ion-label position="floating">Nome</ion-label>
+      <ion-input name="nome" [(ngModel)]="dados.nome" required type="text"></ion-input>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label>Preferências</ion-label>
+      <ion-checkbox name="preferencias" [(ngModel)]="dados.preferencias"></ion-checkbox>
+    </ion-item>
+
+    <ion-button type="submit" expand="block">Salvar</ion-button>
+
+  </form>
+
+</ion-content>

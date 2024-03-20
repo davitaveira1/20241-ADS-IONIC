@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>form3</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <form #form="ngForm" (ngSubmit)="submitForm(form)">
+
+    <ion-item>
+      <ion-label position="floating">Nome</ion-label>
+      <ion-input name="nome" [(ngModel)]="contato.nome" type="text" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Data de nascimento</ion-label>
+      <ion-input [(ngModel)]="contato.data" name="data" type="date" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Preferências</ion-label>
+      <ion-toggle [(ngModel)]="contato.notificacoes" name="notificacoes"></ion-toggle>
+      <ion-label>Receber notificações</ion-label>
+    </ion-item>
+
+    <ion-button type="submit" expand="block">Enviar</ion-button>
+  </form>
+
+
+</ion-content>

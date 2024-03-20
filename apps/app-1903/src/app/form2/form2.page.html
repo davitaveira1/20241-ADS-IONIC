@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Entrada de Dados</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form #form="ngForm" (ngSubmit)="submitForm(form)">
+    <!-- Input de Texto -->
+    <ion-item>
+      <ion-label position="floating">Nome</ion-label>
+      <ion-input name="nome" [(ngModel)]="dados.nome" type="text" required></ion-input>
+    </ion-item>
+
+    <!-- Select -->
+    <ion-item>
+      <ion-label>Gênero</ion-label>
+      <ion-select name="genero" [(ngModel)]="dados.genero" interface="action-sheet" required>
+        <ion-select-option value="masculino">Masculino</ion-select-option>
+        <ion-select-option value="feminino">Feminino</ion-select-option>
+        <ion-select-option value="outro">Outro</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- Checkbox -->
+    <ion-item>
+      <ion-label>Preferências</ion-label>
+      <ion-checkbox name="preferencias" [(ngModel)]="dados.preferencias"></ion-checkbox>
+    </ion-item>
+
+    <ion-button type="submit" expand="block">Enviar</ion-button>
+  </form>
+</ion-content>

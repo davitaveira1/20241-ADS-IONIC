@@ -10,25 +10,25 @@
 
     <ion-item>
       <ion-label position="floating">Nome</ion-label>
-      <ion-input [(ngModel)]="contato.nome" type="text" required></ion-input>
+      <ion-input name="nome" [(ngModel)]="contato.nome" type="text" required></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating">E-mail</ion-label>
-      <ion-input [(ngModel)]="contato.email" type="email" required></ion-input>
+      <ion-input name="email" [(ngModel)]="contato.email" type="email" required email></ion-input>
     </ion-item> 
     
     <ion-item>
       <ion-label position="floating">Telefone</ion-label>
-      <ion-input [(ngModel)]="contato.telefone" type="tel" required></ion-input>
+      <ion-input name="telefone" [(ngModel)]="contato.telefone" type="tel" required></ion-input>
     </ion-item>    
 
     <ion-item>
       <ion-label position="floating">Mensagem</ion-label>
-      <ion-textarea [(ngModel)]="contato.mensagem"></ion-textarea>
+      <ion-textarea name="mensagem" [(ngModel)]="contato.mensagem" required></ion-textarea>
     </ion-item>    
 
-    <ion-button type="submit" expand="block">Enviar</ion-button>
+    <ion-button type="submit" expand="block" [disabled]="!form.valid">Enviar</ion-button>
 
   </form>
 </ion-content>
