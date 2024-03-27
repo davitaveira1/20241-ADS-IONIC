@@ -9,7 +9,7 @@ import { DadosService } from '../services/dados.service';
 export class VisualizarDadosPage implements OnInit {
 
 
-  dadosCadastrados : any[];
+  dadosCadastrados : any[] = [];
 
   constructor(public dados : DadosService) { }
 
@@ -23,7 +23,7 @@ export class VisualizarDadosPage implements OnInit {
   listarDados(){
     
     this.dadosCadastrados = this.dados.visualizarDados();
-    console.log("dados visualizar: "+this.dadosCadastrados)
+    //console.log("dados visualizar: "+this.dadosCadastrados)
   }
 
 

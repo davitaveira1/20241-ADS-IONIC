@@ -18,13 +18,13 @@ export class DadosService {
       bilingue : dados.bilingue,
       cursos : dados.cursos
     }
-    console.log("Serviço add: "+dados1.nome)
+    //console.log("Serviço add: "+dados1.nome)
     this.dadosCadastrados.push(dados1);
     
   }
 
   visualizarDados(){
-    console.log("visualizar dados serviço: "+this.dadosCadastrados)
+    //console.log("visualizar dados serviço: "+this.dadosCadastrados)
     return this.dadosCadastrados;
     
   }
