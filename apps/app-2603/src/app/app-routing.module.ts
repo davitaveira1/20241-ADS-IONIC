@@ -19,6 +19,10 @@ const routes: Routes = [
     path: 'visualizar-dados',
     loadChildren: () => import('./visualizar-dados/visualizar-dados.module').then( m => m.VisualizarDadosPageModule)
   },
+  {
+    path: 'form2',
+    loadChildren: () => import('./form2/form2.module').then( m => m.Form2PageModule)
+  },
 ];
 
 @NgModule({

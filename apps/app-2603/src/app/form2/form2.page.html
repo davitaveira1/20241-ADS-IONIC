@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+
+  <ion-toolbar>
+    <ion-title>form2</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form #form="ngForm" (ngSubmit)="salvar(form)">
+  <ion-item>
+    <ion-label>Opção 1</ion-label>
+    <ion-checkbox [(ngModel)]="opcao1" (ionChange)="atualizarOpcao1()"></ion-checkbox>
+  </ion-item>
+  <ion-item>
+    <ion-label>Opção 2</ion-label>
+    <ion-checkbox [(ngModel)]="opcao2" (ionChange)="atualizarOpcao2()"></ion-checkbox>
+  </ion-item>
+  <ion-item>
+    <ion-label>Opção 3</ion-label>
+    <ion-checkbox [(ngModel)]="opcao3" (ionChange)="atualizarOpcao3()"></ion-checkbox>
+  </ion-item>
+
+  <ion-button type="submit" expand="block" [disabled]="!form.valid">Salvar</ion-button>
+</form>
+</ion-content>

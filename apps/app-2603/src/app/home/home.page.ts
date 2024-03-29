@@ -14,6 +14,10 @@ export class HomePage {
     this.route.navigate(['/form1'])
   }
 
+  form2(){
+    this.route.navigate(['/form2'])
+  }  
+
   visualizarDados(){
     this.route.navigate(['/visualizar-dados'])
 
