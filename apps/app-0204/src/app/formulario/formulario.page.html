@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Formulário</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form #form="ngForm" (ngSubmit)="salvar(form)">
+    <!-- Input de Texto - Nome -->
+    <ion-item>
+      <ion-label position="floating">Nome</ion-label>
+      <ion-input name="nome" [(ngModel)]="dadosFormulario.nome" type="text" required></ion-input>
+    </ion-item>
+
+    <!-- Select - Sexo -->
+    <ion-item>
+      <ion-label>Sexo</ion-label>
+      <ion-select name="sexo" [(ngModel)]="dadosFormulario.sexo" interface="action-sheet" required>
+        <ion-select-option value="masculino">Masculino</ion-select-option>
+        <ion-select-option value="feminino">Feminino</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- Input de Texto - Telefone -->
+    <ion-item>
+      <ion-label position="floating">Telefone</ion-label>
+      <ion-input name="telefone" [(ngModel)]="dadosFormulario.tel" type="tel" required></ion-input>
+    </ion-item>
+
+    <!-- Input de Texto - Matrícula -->
+    <ion-item>
+      <ion-label position="floating">Matrícula</ion-label>
+      <ion-input name="matricula" [(ngModel)]="dadosFormulario.mat" type="text" required></ion-input>
+    </ion-item>
+
+    <!-- Toggle - Aluno Bilingue -->
+    <ion-item>
+      <ion-label>Aluno Bilingue</ion-label>
+      <ion-toggle name="alunoBilingue" [(ngModel)]="dadosFormulario.bilingue"></ion-toggle>
+    </ion-item>
+
+    <!-- Checkbox - Cursos de Tecnologia -->
+    <ion-item>
+      <ion-label>Cursos de Tecnologia</ion-label>
+    </ion-item>
+ 
+    <ion-item>
+      <ion-label>HTML</ion-label>
+      <ion-checkbox slot="start" (ionChange)="atualizarOpcao1()"></ion-checkbox>        
+    </ion-item>
+    <ion-item>
+      <ion-label>PHP</ion-label>
+      <ion-checkbox slot="start" (ionChange)="atualizarOpcao2()"></ion-checkbox>        
+    </ion-item>
+    <ion-item>
+      <ion-label>C#</ion-label>
+      <ion-checkbox slot="start" (ionChange)="atualizarOpcao3()"></ion-checkbox>        
+    </ion-item>
+
+    <ion-button type="submit" expand="block" [disabled]="!form.valid">Salvar</ion-button>
+  </form>
+</ion-content>
