@@ -37,8 +37,30 @@ export class ListarDadosPage implements OnInit {
 
   }
 
-  alertExcluir(obj : dadosForm){
+  async alertExcluir(obj : dadosForm){
+    this.indexObj = this.servico.encontrarPosicaoObj(obj);
 
+    const alert = await this.alert.create({
+      header: 'Excluir item !',
+      message: 'Deseja realmente excluir o item ?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel'
+        }, {
+          text: 'Excluir',
+          handler: async () => {
+            this.servico.deletarItem(this.indexObj);
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  editarItem(obj : dadosForm){
+    this.indexObj = this.servico.encontrarPosicaoObj(obj);
+    this.rota.navigate(['editar-obj/'+this.indexObj])
   }
 
 

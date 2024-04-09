@@ -27,6 +27,14 @@ const routes: Routes = [
     path: 'formulario',
     loadChildren: () => import('./formulario/formulario.module').then( m => m.FormularioPageModule)
   },
+  {
+    path: 'editar-obj',
+    loadChildren: () => import('./editar-obj/editar-obj.module').then( m => m.EditarObjPageModule)
+  },
+  {
+    path: 'editar-obj/:item',
+    loadChildren: () => import('./editar-obj/editar-obj.module').then( m => m.EditarObjPageModule)
+  },  
 ];
 
 @NgModule({

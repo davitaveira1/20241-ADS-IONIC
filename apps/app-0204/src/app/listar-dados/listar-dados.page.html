@@ -19,6 +19,11 @@
       </ion-item>
 
       <ion-item-options side="end">
+
+        <ion-item-option color="secondary" expandable (click)="editarItem(dado)">
+          Editar
+        </ion-item-option>
+
         <ion-item-option color="danger" (click)="alertExcluir(dado)">
           <ion-icon name="trash-outline" slot="icon-only"></ion-icon>
         </ion-item-option>

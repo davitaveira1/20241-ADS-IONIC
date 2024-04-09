@@ -7,6 +7,7 @@ import { dadosForm } from '../models/dadosForm';
 export class DadosService {
 
   private dadosCadastrados : dadosForm[] = [];
+  indice : number;
 
   constructor() { }
 
@@ -33,6 +34,15 @@ export class DadosService {
 
   public retornarObjViaPosicao(pos : number){
     return this.dadosCadastrados[pos];
+  }
+
+  public deletarItem(index : number){
+    this.dadosCadastrados.splice(index,1);
+  }
+
+  public editarItem(obj : dadosForm){
+    this.indice = this.encontrarPosicaoObj(obj);
+    this.dadosCadastrados.splice(this.indice,1,obj)
   }
 
 }
