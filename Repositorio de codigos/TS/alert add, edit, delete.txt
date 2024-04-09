@@ -1,0 +1,160 @@
+import { ItensService } from './../services/itens.service';
+import { Component, OnInit } from '@angular/core';
+import { AlertController, PopoverController, ToastController } from '@ionic/angular';
+import { ConexaoApiService } from '../services/conexao-api.service';
+
+@Component({
+  selector: 'app-home',
+  templateUrl: 'home.page.html',
+  styleUrls: ['home.page.scss'],
+})
+export class HomePage {
+
+  itens: any = [];
+  type: string = "pending";
+
+  constructor(public alertController: AlertController,
+    public itensService: ItensService,
+    public toastController: ToastController,
+    public conexaoApi: ConexaoApiService) { }
+
+  async ionViewWillEnter() {
+
+    this.itens = await this.itensService.getItens();
+    console.log("itens home: " + this.itens);
+
+  }
+
+  listar() {
+    this.itens = [];
+    return new Promise(resolve => {
+      let dados = {
+        acao: 'getItensBD'
+      };
+
+      this.conexaoApi.dadosApi(dados, 'api.php').subscribe(data => {
+
+        if (data['result'] == 0) {
+
+        } else {
+          for (let itensBD of data['result']) {
+
+            this.itens.push(itensBD);
+            //console.log("Valores: "+this.produtos.nome);
+          }
+
+
+          console.log("Dados buscados com sucesso home.ts!");
+          console.log(this.itens);
+        }
+
+
+      });
+
+    });
+
+  }
+
+  async atualizarItemAdquirido(id: number, statusAdquirido: number) {
+    await this.itensService.atualizarItemAdquiridoBD(id, statusAdquirido);
+    this.ionViewWillEnter();
+
+  }
+
+  async presentAlertPromptAdd() {
+    const alert = await this.alertController.create({
+      header: 'Adicionar item !',
+      inputs: [
+        {
+          name: 'item',
+          type: 'text',
+          placeholder: 'Item'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel'
+        }, {
+          text: 'Salvar',
+          handler: async (alertData) => {
+            if (alertData.item != "") {
+              await this.itensService.adicionarItemBD(alertData.item);
+              this.ionViewWillEnter();
+
+            }
+            else {
+              this.presentToast();
+              this.presentAlertPromptAdd();
+            }
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  async presentAlertPromptDelete(id: number) {
+    const alert = await this.alertController.create({
+      header: 'Excluir item !',
+      message: 'Deseja realmente excluir o item ?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel'
+        }, {
+          text: 'Excluir',
+          handler: async () => {
+            await this.itensService.deletarItemBD(id);
+            this.ionViewWillEnter();
+          }
+
+
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  async presentAlertPromptUpdate(id: number, item: any) {
+    const alert = await this.alertController.create({
+      header: 'Atualizar item !',
+      inputs: [
+        {
+          name: 'nome',
+          type: 'text',
+          placeholder: 'Nome do item',
+          value: item.nome
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel'
+        }, {
+          text: 'Salvar',
+          handler: async (alertData) => {
+            if (alertData.item == "") {
+              this.presentToast();
+
+            }
+            else {
+              await this.itensService.atualizarItemBD(id, alertData.nome);
+              this.ionViewWillEnter();
+            }
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: "Preencha o item!",
+      duration: 2000
+    });
+    toast.present();
+  }
+
+}

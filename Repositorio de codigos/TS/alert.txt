@@ -1,0 +1,16 @@
+import { ToastController } from '@ionic/angular';
+
+constructor(public toast : ToastController) { }
+
+cadastrar(){
+    this.mensagem('Produto '+this.nome+' adicionado com sucesso!',3000,'success');
+}
+
+async mensagem(msg : any,duration : any,color : any) {
+const toast = await this.toast.create({
+      message: msg,
+      duration: duration,
+      color: color
+    });
+    toast.present();
+}

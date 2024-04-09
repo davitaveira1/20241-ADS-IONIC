@@ -1,0 +1,20 @@
+  async presentAlertPromptDelete(obj : DadosFormulario) {
+    this.indexObjeto = this.dados.buscarIndex(obj);
+
+    const alert = await this.alertController.create({
+      header: 'Excluir item !',
+      message: 'Deseja realmente excluir o item ?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel'
+        }, {
+          text: 'Excluir',
+          handler: async () => {
+            this.dados.deletarItem(this.indexObjeto);
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
