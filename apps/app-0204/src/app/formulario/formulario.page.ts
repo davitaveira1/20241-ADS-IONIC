@@ -34,13 +34,13 @@ export class FormularioPage implements OnInit {
     if (form.valid) {     
 
       if (this.cursoHTML) {
-        this.dadosFormulario.cursos.push("HTML");
+        this.dadosFormulario.cursos[0] = "HTML";
       }
       if (this.cursoPHP) {
-        this.dadosFormulario.cursos.push("PHP");
+        this.dadosFormulario.cursos[1] = "PHP";
       }
       if (this.cursoCSharp) {
-        this.dadosFormulario.cursos.push("C#");
+        this.dadosFormulario.cursos[2] = "C#";
       }
 
       console.log("Dados preenchidos: " + JSON.stringify(this.dadosFormulario))
@@ -62,7 +62,6 @@ export class FormularioPage implements OnInit {
     this.dadosFormulario.mat = '';
     this.dadosFormulario.bilingue = false;
     this.dadosFormulario.cursos = [];
-
 
   }  
 

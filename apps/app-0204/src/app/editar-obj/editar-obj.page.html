@@ -49,24 +49,24 @@
  
     <ion-item>
       <ion-label>HTML</ion-label>
-      <!--
-      <ion-checkbox *ngIf="obj.cursos[]" checked="true" slot="start"></ion-checkbox>        
-      <ion-checkbox *ngIf="!obj.cursos[0]" checked="false" slot="start"></ion-checkbox>
-      -->
+      
+      <ion-checkbox *ngIf="obj.cursos[0]" checked="true" slot="start" (ionChange)="atualizarOpcao0()"></ion-checkbox>        
+      <ion-checkbox *ngIf="!obj.cursos[0]" checked="false" slot="start" (ionChange)="atualizarOpcao0()"></ion-checkbox>
+      
     </ion-item>
     <ion-item>
       <ion-label>PHP</ion-label>
-      <!--
-      <ion-checkbox *ngIf="obj.cursos[1]" checked="true" slot="start"></ion-checkbox>        
-      <ion-checkbox *ngIf="!obj.cursos[1]" checked="false" slot="start"></ion-checkbox> 
-      -->    
+      
+      <ion-checkbox *ngIf="obj.cursos[1]" checked="true" slot="start" (ionChange)="atualizarOpcao1()"></ion-checkbox>        
+      <ion-checkbox *ngIf="!obj.cursos[1]" checked="false" slot="start" (ionChange)="atualizarOpcao1()"></ion-checkbox> 
+      
     </ion-item>
     <ion-item>
       <ion-label>C#</ion-label>
-      <!--
-      <ion-checkbox *ngIf="obj.cursos[2]" checked="true" slot="start"></ion-checkbox>        
-      <ion-checkbox *ngIf="!obj.cursos[2]" checked="false" slot="start"></ion-checkbox> 
-      -->      
+      
+      <ion-checkbox *ngIf="obj.cursos[2]" checked="true" slot="start" (ionChange)="atualizarOpcao2()"></ion-checkbox>        
+      <ion-checkbox *ngIf="!obj.cursos[2]" checked="false" slot="start" (ionChange)="atualizarOpcao2()"></ion-checkbox> 
+          
     </ion-item>
 
     <ion-button type="submit" expand="block" [disabled]="!form.valid">Salvar</ion-button>

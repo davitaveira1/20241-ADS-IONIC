@@ -12,6 +12,7 @@ export class VisualizarDadosObjetoPage implements OnInit {
 
   pos : number=0;
   objRetornado : dadosForm;
+  cursosString: string
 
   constructor(public parametroRota : ActivatedRoute,
               public servico : DadosService) { }
@@ -23,11 +24,14 @@ export class VisualizarDadosObjetoPage implements OnInit {
       (data : any) => {
         this.pos = data.pos;
         this.objRetornado = this.servico.retornarObjViaPosicao(this.pos)
+        this.cursosString = this.objRetornado.cursos.join('\n');
       }
 
     )
 
   }
+
+
 
 
 
